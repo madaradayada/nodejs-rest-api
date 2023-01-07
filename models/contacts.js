@@ -10,7 +10,7 @@ const listContacts = async () => {
   
 }
 
-const getContactById = async(contactId) => {    
+const getContacts = async(contactId) => {    
     const contacts = await listContacts();
     const contact = contacts.find(({ id }) => id === contactId.toString());
     return contact || null;       
@@ -45,9 +45,8 @@ const removeContact = async(contactId)=> {
 }
 
 const updateContact = async (id, body) => {
-    const normId = String(id);
     const contacts = await listContacts();
-    const index = contacts.findIndex(contact => contact.id === normId);
+    const index = contacts.findIndex(contact => contact.id === String(id));
     if (index === -1) {
         return null;
     }
@@ -58,7 +57,7 @@ const updateContact = async (id, body) => {
 
 module.exports = {
   listContacts,
-  getContactById,
+  getContacts,
   removeContact,
   addContact,
   updateContact,
