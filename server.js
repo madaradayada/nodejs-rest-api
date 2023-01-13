@@ -5,9 +5,9 @@ const app = require('./app')
 require('dotenv').config();
 mongoose.set("strictQuery", false);
 
-const { DB_HOST, PORT} = process.env;
+const { HOST_URL, PORT} = process.env;
 
-mongoose.connect(DB_HOST)
+mongoose.connect(HOST_URL)
   .then(() => {
     app.listen(PORT, () => {
       console.log("Server running. Use our API on port: 3000");
