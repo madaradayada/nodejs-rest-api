@@ -1,7 +1,7 @@
 const { Contact } = require('../../models/contact');
 const { HttpError }  = require('../../helpers');
 
-const removeById = async (req, res, next) => {
+const removeContact = async (req, res, next) => {
   try {
       const { contactId } = req.params;
       const result = await Contact.findByIdAndRemove(contactId);
@@ -14,4 +14,4 @@ const removeById = async (req, res, next) => {
       next(error)
   }
 }
-module.exports = removeById
+module.exports = removeContact
